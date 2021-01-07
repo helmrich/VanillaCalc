@@ -4,6 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;600;900&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script src="script.js" type="module"></script>
     <title>Calculator</title>
@@ -11,8 +14,10 @@
 
 <body>
     <main>
+        <h1>VanillaCalc</h1>
+        <p>A simple calculator written in Vanilla JavaScript</p>
         <div id="calculator">
-            <input type="text" id="outputField">
+            <input type="text" id="outputField" value="1 + 7" readonly>
             <div id="calculatorButtons">
                 <input type="button" value="&Sqrt;">
                 <input type="button" value="!">
@@ -41,6 +46,9 @@
             </div>
         </div>
     </main>
+    <footer>
+        <p>&copy;2021 <a href="https://github.com/helmrich" target="_blank">Tobias Helmrich</a></p>
+    </footer>
 </body>
 
 </html>
