@@ -20,7 +20,9 @@ document.querySelectorAll(".operator").forEach(element => {
 });
 
 document.getElementById("equals").addEventListener("click", (e) => {
-    operate(operatorString, numberOneString, numberTwoString);
+    const numberOne = parseFloat(numberOneString);
+    const numberTwo = parseFloat(numberTwoString);
+    operate(operatorString, numberOne, numberTwo);
 });
 
 document.getElementById("reset").addEventListener("click", reset);
@@ -114,9 +116,8 @@ function factorial(number) {
     return factorial;
 }
 
-function operate(opString, numOneString, numTwoString) {
+function operate(opString, numberOne, numberTwo) {
     if (opString === "!" || opString === "√") {
-        const numberOne = parseFloat(numOneString);
 
         if (opString === "!") {
             result = factorial(numberOne);
@@ -136,9 +137,6 @@ function operate(opString, numOneString, numTwoString) {
     }
 
     if (numberOneString === "" || numberTwoString === "" || opString === "") return;
-
-    const numberOne = parseFloat(numOneString);
-    const numberTwo = parseFloat(numTwoString);
 
     let calculationResult;
 
@@ -189,10 +187,13 @@ function inputOperatorString(e) {
     // The calculation should be executed when all parts necessary for calculation are available
     if (numberOneString !== "" && numberTwoString !== "" && operatorString !== "") {
         // two numbers and the operator
-        operate(operatorString, numberOneString, numberTwoString);
+        const numberOne = parseFloat(numberOneString);
+        const numberTwo = parseFloat(numberTwoString);
+        operate(operatorString, numberOne, numberTwo);
     } else if (numberOneString !== "" && (operatorString === "!" || operatorString === "√")) {
         // only one number, but the operator is either a factorial or square root
-        operate(operatorString, numberOneString, "");
+        const numberOne = parseFloat(numberOneString);
+        operate(operatorString, numberOne, null);
     }
 
     if (numberOneString !== "") {
