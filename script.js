@@ -77,22 +77,27 @@ function multiply(factorOne, factorTwo) {
 }
 
 function divide(dividend, divisor) {
+    if (!checkDivisorValidity(divisor)) return;
+    return dividend / divisor;
+}
+
+function getRemainder(dividend, divisor) {
+    if (!checkDivisorValidity(divisor)) return;
+    return dividend % divisor;
+}
+
+function checkDivisorValidity(divisor) {
     if (divisor === 0) {
         outputField.value = "Wait a minu... 💀"
         numberOneString = "";
         numberTwoString = "";
         operatorString = "";
         result = null;
-        return;
+        return false;
     }
-    return dividend / divisor;
+    return true;
 }
 
-function getRemainder(dividend, divisor) {
-    return dividend % divisor;
-}
-
-// TODO: Implement root and factorial
 function takeRoot(radicand) {
     return Math.sqrt(radicand);
 }
@@ -153,6 +158,7 @@ function operate(opString, numOneString, numTwoString) {
             break;
         case "%":
             calculationResult = getRemainder(numberOne, numberTwo);
+            if (numberTwo === 0) return;
             break;
         default:
             return `Unknown operator: ${opString}`;
@@ -180,9 +186,12 @@ function inputNumber(e) {
 }
 
 function inputOperatorString(e) {
+    // The calculation should be executed when all parts necessary for calculation are available
     if (numberOneString !== "" && numberTwoString !== "" && operatorString !== "") {
+        // two numbers and the operator
         operate(operatorString, numberOneString, numberTwoString);
     } else if (numberOneString !== "" && (operatorString === "!" || operatorString === "√")) {
+        // only one number, but the operator is either a factorial or square root
         operate(operatorString, numberOneString, "");
     }
 
