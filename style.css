@@ -10,6 +10,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: var(--main-font);
+    color: var(--black);
 }
 
 h1 {
@@ -17,9 +18,10 @@ h1 {
     margin: 0;
 }
 
-p {
+h1 + p {
     font-weight: 300;
     margin: 0 0 50px 0;
+    text-align: center;
 }
 
 a {
@@ -78,6 +80,12 @@ footer {
     transition: all 0.1s;
 }
 
+#calculatorButtons > input[type="button"].operator,
+#calculatorButtons > input[type="button"]#reset {
+    background-color: var(--light-grey);
+    filter: brightness(90%);
+}
+
 #calculatorButtons > input[value="="] {
     background-color: var(--blue);
     color: white;
@@ -85,6 +93,19 @@ footer {
 
 #calculatorButtons > input[type="button"]:hover {
     filter: brightness(95%);
+    cursor: pointer;
+}
+
+#calculatorButtons > input[type="button"].operator:hover,
+#calculatorButtons > input[type="button"]#reset:hover {
+    filter: brightness(80%);
+    cursor: pointer;
+}
+
+
+
+#reset:hover {
+    filter: brightness(90%);
 }
 
 #calculatorButtons > input[type="button"]:focus {
@@ -106,4 +127,10 @@ footer {
 
 #outputField:focus {
     outline: none;
+}
+
+@media screen and (max-width: 460px) {
+    #calculatorButtons {
+        grid-template-columns: repeat(4, 1fr);
+    }
 }
