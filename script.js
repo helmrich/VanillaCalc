@@ -182,6 +182,8 @@ function inputNumber(e) {
 function inputOperatorString(e) {
     if (numberOneString !== "" && numberTwoString !== "" && operatorString !== "") {
         operate(operatorString, numberOneString, numberTwoString);
+    } else if (numberOneString !== "" && (operatorString === "!" || operatorString === "√")) {
+        operate(operatorString, numberOneString, "");
     }
 
     if (numberOneString !== "") {
