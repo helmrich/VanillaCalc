@@ -37,6 +37,7 @@ a:hover {
 }
 
 input {
+    -webkit-appearance: none;
     font-family: var(--main-font);
     border-radius: 5px;
 }
